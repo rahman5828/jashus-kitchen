@@ -9,12 +9,13 @@
 
     var $ = function (s) { return document.querySelector(s); };
     var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var AMP = String.fromCharCode(38);
     function esc(s) {
       return String(s)
-        .replace(/&/g, "\u0026amp;")
-        .replace(/</g, "\u0026lt;")
-        .replace(/>/g, "\u0026gt;")
-        .replace(/"/g, "\u0026quot;");
+        .split(AMP).join(AMP + "amp;")
+        .split("<").join(AMP + "lt;")
+        .split(">").join(AMP + "gt;")
+        .split('"').join(AMP + "quot;");
     }
     var rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -148,7 +149,7 @@
         $("#dc").textContent = m.category;
         $("#dt").textContent = m.name;
         $("#dd").textContent = m.description;
-        $("#dp").textContent = [m.price, m.status].filter(Boolean).join(" \u00b7 ");
+        $("#dp").textContent = [m.price, m.status].filter(Boolean).join(" - ");
         fill($("#di"), m.image, m.name, true);
         $("#dlg").showModal();
       };
@@ -178,7 +179,7 @@
           '<p>' + esc(s.desc) + '</p>' +
           '<div class="tg">' + tags + '</div>' +
           '<a class="pill f" href="https://wa.me/916385153008?text=' +
-          encodeURIComponent("Hi, I'd like the " + s.name + " plan") +
+          encodeURIComponent("Hi, I would like the " + s.name + " plan") +
           '" target="_blank" rel="noopener">Subscribe on WhatsApp</a>' +
           '</div></article>';
       }).join("");
