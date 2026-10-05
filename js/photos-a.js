@@ -1,1 +1,1 @@
-LOADING
+window.PHOTOS=window.PHOTOS||{};window.PHOTOS.hero="data:image/jpeg;base64,PLACEHOLDER";window.PHOTOS.t1=window.PHOTOS.hero;
