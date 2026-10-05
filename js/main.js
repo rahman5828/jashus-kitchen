@@ -19,19 +19,22 @@
     }
     var rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function fill(el, src, alt, eager) {
+    function fill(el, src, alt) {
       if (!el || !src) return;
       el.classList.remove("has");
       el.innerHTML = "";
-      var im = new Image();
+      var im = document.createElement("img");
       im.alt = alt || "";
       im.decoding = "async";
       im.referrerPolicy = "no-referrer";
-      im.loading = eager ? "eager" : "lazy";
+      im.loading = "eager";
       im.onload = function () {
         el.classList.add("has");
-        el.appendChild(im);
       };
+      im.onerror = function () {
+        el.classList.remove("has");
+      };
+      el.appendChild(im);
       im.src = src;
     }
 
@@ -39,8 +42,7 @@
       $$("[data-img]").forEach(function (el) {
         var key = el.dataset.img;
         if (typeof IMAGES !== "undefined" && IMAGES[key]) {
-          var eager = key === "hero" || key === "d1" || key === "band";
-          fill(el, IMAGES[key], "", eager);
+          fill(el, IMAGES[key], "");
         }
       });
     }
@@ -150,7 +152,7 @@
         $("#dt").textContent = m.name;
         $("#dd").textContent = m.description;
         $("#dp").textContent = [m.price, m.status].filter(Boolean).join(" - ");
-        fill($("#di"), m.image, m.name, true);
+        fill($("#di"), m.image, m.name);
         $("#dlg").showModal();
       };
     }
