@@ -40,7 +40,7 @@ nav.d a:hover{border-color:var(--cu)}
 .hero .wrap{position:relative;z-index:2;width:100%}
 .hero h1{font-size:clamp(66px,19vw,280px);line-height:.82;margin:20px 0 26px}
 .hero h1 em{display:block;padding-left:.5em;color:var(--cu2)}
-.hero .sub{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:end;border-top:1px solid:1px solid rgba(243,235,222,.3);padding-top:20px}
+.hero .sub{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:end;border-top:1px solid rgba(243,235,222,.3);padding-top:20px}
 .hero p{margin:0;max-width:30ch;font-size:clamp(16px,1.8vw,20px);color:#e5dccd}
 .ln{display:block;overflow:hidden;padding-bottom:.06em}.ln>span{display:block;transform:translateY(105%);animation:up 1.2s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,.1s)}
 @keyframes up{to{transform:none}}
@@ -99,7 +99,7 @@ dialog .g{display:grid}.dd{padding:26px}.dd h3{font-size:clamp(40px,6vw,64px);ma
 .ig{background:var(--dk);color:var(--lt)}
 .ig .cl{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:40px 0}
 .ig .cl .ph{aspect-ratio:1}.ig .cl .ph:first-child{grid-column:span 2;aspect-ratio:16/10}
-@media(min-width:900px){.ig .cl{grid-template-columns:repeat(4,1fr);gap:12px}.ig .cl .ph:first-child co{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}.ig .cl .ph:last-child{grid-column:span 1}}
+@media(min-width:900px){.ig .cl{grid-template-columns:repeat(4,1fr);gap:12px}.ig .cl .ph:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}.ig .cl .ph:last-child{grid-column:span 1}}
 .hd{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
 .hd .h{font:italic 400 clamp(32px,6vw,84px)/1 var(--serif);color:var(--cu2)}
 .fol{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-block:1px solid rgba(243,235,222,.25);text-decoration:none;font:400 clamp(30px,6vw,84px)/1 var(--serif);transition:padding .4s,color .3s}
@@ -140,7 +140,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
 .card:hover .vw,.card:focus-visible .vw{opacity:1;transform:none}
 .card .st{position:absolute;z-index:2;top:12px;right:12px;background:var(--cu);color:#fff;font:700 9px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;padding:7px 9px}
 .card .tg{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.card .tg i{font:700 9px/1 var(--sans);font-style:normal;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--line);padding:6px 8px}
-/* subscription packs */
 .subs{background:var(--bg2)}
 .sub-lead{margin:-12px 0 40px;color:var(--mut);max-width:42ch;font-size:clamp(16px,1.8vw,19px)}
 .sub-grid{display:grid;gap:20px}
@@ -154,12 +153,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
 .sub-body .tg{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
 .sub-body .tg i{font:700 9px/1 var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:6px 8px}
 .sub-body .pill{align-self:flex-start;margin-top:8px}
-/* floating WhatsApp */
 .wa-fab{position:fixed;z-index:55;right:18px;bottom:calc(88px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;padding:14px 20px 14px 16px;background:#25D366;color:#fff;border-radius:99px;text-decoration:none;font:700 13px/1 var(--sans);letter-spacing:.06em;box-shadow:0 12px 32px rgba(37,211,102,.4);transition:transform .25s,box-shadow .25s}
 .wa-fab:hover{transform:scale(1.05);box-shadow:0 16px 40px rgba(37,211,102,.5)}
 .wa-fab svg{width:28px;height:28px;flex:none}
 @media(min-width:960px){.wa-fab{bottom:24px;right:24px}}
-/* palettes */
 :root[data-palette=terracotta]{--bg:#f4ebdd;--bg2:#e9dac4;--ink:#2a1a14;--mut:#725a4d;--cu:#a53f22;--cu2:#e59570;--line:rgba(42,26,20,.2);--dk:#241410;--lt:#f6ece0}
 :root[data-palette=forest]{--bg:#eef0e6;--bg2:#dfe3d0;--ink:#17231c;--mut:#566559;--cu:#7f6420;--cu2:#d6b46a;--line:rgba(23,35,28,.2);--dk:#101a14;--lt:#f1f0e4}
 :root[data-palette=midnight]{--bg:#14110f;--bg2:#1d1814;--ink:#f1e8d8;--mut:#a79b8a;--cu:#c9a15b;--cu2:#e0bb7c;--line:rgba(241,232,216,.2);--dk:#0a0807;--lt:#f1e8d8}
