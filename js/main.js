@@ -11,11 +11,41 @@
     const $$ = s => [...document.querySelectorAll(s)];
     const esc = s =>
       String(s)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+        .replace(/&/g, "&")
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/"/g, """);
     const rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function fill(el, src, alt, eager) {
+      if (!el || !src) return;
+      el.classList.remove("has");
+      el.innerHTML = "";
+      const im = new Image();
+      im.alt = alt || "";
+      im.decoding = "async";
+      im.referrerPolicy = "no-referrer";
+      if (eager) im.loading = "eager";
+      else im.loading = "lazy";
+      im.onload = () => {
+        el.classList.add("has");
+        el.append(im);
+      };
+      im.onerror = () => {
+        /* keep placeholder if image fails */
+      };
+      im.src = src;
+    }
+
+    function fillAll() {
+      $$("[data-img]").forEach(el => {
+        const key = el.dataset.img;
+        if (typeof IMAGES !== "undefined" && IMAGES[key]) {
+          const eager = key === "hero" || key === "d1" || key === "band";
+          fill(el, IMAGES[key], "", eager);
+        }
+      });
+    }
 
     /* Story */
     const chs = $("#chs");
@@ -26,25 +56,7 @@
       ).join("");
     }
 
-    function fill(el, src, alt) {
-      if (!el || !src) return;
-      el.classList.remove("has");
-      el.innerHTML = "";
-      const im = new Image();
-      im.alt = alt || "";
-      im.loading = "lazy";
-      im.decoding = "async";
-      im.onload = () => {
-        el.classList.add("has");
-        el.append(im);
-      };
-      im.src = src;
-    }
-
-    $$("[data-img]").forEach(el => {
-      const key = el.dataset.img;
-      if (typeof IMAGES !== "undefined" && IMAGES[key]) fill(el, IMAGES[key], "");
-    });
+    fillAll();
 
     if (CONFIG.phone) {
       const t = "tel:" + CONFIG.phone;
@@ -147,7 +159,7 @@
         $("#dt").textContent = m.name;
         $("#dd").textContent = m.description;
         $("#dp").textContent = [m.price, m.status].filter(Boolean).join(" · ");
-        fill($("#di"), m.image, m.name);
+        fill($("#di"), m.image, m.name, true);
         $("#dlg").showModal();
       };
     }
