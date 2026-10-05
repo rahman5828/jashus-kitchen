@@ -26,7 +26,7 @@ const IMAGES = {
   c4: "https://lh3.googleusercontent.com/d/1yl91uX7Fp1MfuPGVBULsu0Ru_DL6cqB8=w800"
 };
 
-/* Dish photos: kitchen Drive + verified South Indian stock (Wikimedia / Unsplash) */
+/* Every dish image matched to the dish name */
 const MENU = [
   {
     name: "Idli, Sambar & Chutney",
@@ -39,28 +39,28 @@ const MENU = [
     name: "Veg Upma / Semiya & Chutney",
     description: "Fluffy upma or semiya cooked with mild spices, served with chutney. Simple home-style breakfast.",
     price: "Morning", category: "Morning",
-    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Semiya_upma.jpg/960px-Semiya_upma.jpg",
     status: "Tuesday", tags: ["Veg"]
   },
   {
     name: "Pongal, Sambar, Chutney & Vada",
     description: "Creamy ven pongal tempered with ghee and pepper, with sambar, chutney and crisp vada.",
     price: "Morning", category: "Morning",
-    image: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w800",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Ven_pongal.jpg/960px-Ven_pongal.jpg",
     status: "Wednesday", tags: ["Veg"]
   },
   {
     name: "Dosa & Kadala Curry",
     description: "Crisp dosa paired with spicy black chickpea (kadala) curry — a classic combination.",
     price: "Morning", category: "Morning",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Dosa_with_chutney_and_sambar_traditionally_served_in_banana_leaf.jpg",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Dosa_with_chutney_and_sambar_traditionally_served_in_banana_leaf.jpg/960px-Dosa_with_chutney_and_sambar_traditionally_served_in_banana_leaf.jpg",
     status: "Thursday", tags: ["Veg"]
   },
   {
     name: "Idiyappam, Coconut Milk & Kuruma",
     description: "Soft string hoppers with sweet coconut milk and vegetable kuruma on the side.",
     price: "Morning", category: "Morning",
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Idiyappam_-_Kerala.jpg/960px-Idiyappam_-_Kerala.jpg",
     status: "Friday", tags: ["Veg"]
   },
   {
@@ -74,7 +74,7 @@ const MENU = [
     name: "Appam, Coconut Milk & Paya",
     description: "Lacy appams with coconut milk and paya. Sunday special from the kitchen.",
     price: "Morning", category: "Morning",
-    image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Palappam.jpg/960px-Palappam.jpg",
     status: "Sunday", tags: ["Non-veg option"]
   },
   {
@@ -116,7 +116,7 @@ const MENU = [
     name: "Jeera Rice, Dal Tadka & Veg Fry",
     description: "Aromatic jeera rice with dal tadka and seasonal veg fry.",
     price: "Lunch", category: "Lunch",
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Jeera_rice.jpg/960px-Jeera_rice.jpg",
     status: "Saturday", tags: ["Veg"]
   },
   {
@@ -130,21 +130,21 @@ const MENU = [
     name: "Chapathi & Kuruma",
     description: "Soft chapathis with vegetable kuruma. Light and satisfying.",
     price: "Dinner", category: "Dinner",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/76/Kerala_paratha.jpg",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Chapati.jpg/960px-Chapati.jpg",
     status: "Monday", tags: ["Veg"]
   },
   {
     name: "Kal Dosa & Empty Salna",
     description: "Kal dosa with empty salna — simple, flavourful dinner.",
     price: "Dinner", category: "Dinner",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Masala_Dosa_in_Banana_Leaf_with_Chutney.jpg/960px-Masala_Dosa_in_Banana_Leaf_with_Chutney.jpg",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Masala_Dosa_in_Banana_Leaf_with_Chutney.jpg/960px-Masala_Dosa_in_Banana_Leaf_with_Chutney.jpg",
     status: "Tuesday", tags: ["Veg"]
   },
   {
     name: "Aloo Paratha & Green Chutney",
     description: "Stuffed aloo paratha with fresh green chutney. Homestyle and filling.",
     price: "Dinner", category: "Dinner",
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Aloo_paratha.jpg/960px-Aloo_paratha.jpg",
     status: "Wednesday", tags: ["Veg"]
   },
   {
@@ -158,21 +158,21 @@ const MENU = [
     name: "Veg Kichadi & Chutney",
     description: "Comforting vegetable kichadi with chutney. Easy on the stomach.",
     price: "Dinner", category: "Dinner",
-    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Khichdi.jpg/960px-Khichdi.jpg",
     status: "Friday", tags: ["Veg"]
   },
   {
     name: "Parotta, Salna & Omelette",
     description: "Flaky parotta with salna and omelette. Saturday night comfort.",
     price: "Dinner", category: "Dinner",
-    image: "https://upload.wikimedia.org/wikipedia/commons/2/20/Parotta_in_Salem.jpg",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Parotta_in_Salem.jpg/960px-Parotta_in_Salem.jpg",
     status: "Saturday", tags: ["Non-veg option"]
   },
   {
     name: "Uthappam & Kuruma",
     description: "Thick uthappam with kuruma. A relaxed Sunday dinner.",
     price: "Dinner", category: "Dinner",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Dosa_with_chutney_and_sambar_traditionally_served_in_banana_leaf.jpg",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Onion_Uttappam_01.jpg/960px-Onion_Uttappam_01.jpg",
     status: "Sunday", tags: ["Veg"]
   }
 ];
@@ -184,7 +184,6 @@ const CHAPTERS = [
   ["Where we are", "Based in Keelkattalai, Chennai. Call or WhatsApp 6385153008 for orders and dietary preferences."]
 ];
 
-/* Prices from kitchen flyers: B ₹75/day, L ₹100/day, D ₹75/day */
 const SUBSCRIPTION = [
   {
     name: "Breakfast",
