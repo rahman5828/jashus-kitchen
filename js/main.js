@@ -81,9 +81,8 @@
 
       chipsEl.innerHTML = cats.map(function (c) {
         var n = c === "All" ? MENU.length : MENU.filter(function (m) { return m.category === c; }).length;
-        var on = c === cat ? " on" : "";
-        return '<button type="button" class="chip' + on + '" data-c="' + esc(c) + '">' +
-          esc(c) + " " + n + "</button>";
+        return '<button type="button" class="chip" aria-pressed="' + (c === cat) + '" data-c="' +
+          esc(c) + '">' + esc(c) + '<sup>' + n + '</sup></button>';
       }).join("");
 
       var list = MENU.map(function (m, i) { return [m, i]; }).filter(function (pair) {
@@ -100,15 +99,17 @@
       gridEl.innerHTML = list.map(function (pair) {
         var m = pair[0], i = pair[1];
         var tags = (m.tags && m.tags.length)
-          ? '<div class="meta">' + m.tags.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + "</div>"
+          ? '<span class="tg">' + m.tags.map(function (t) { return '<i>' + esc(t) + '</i>'; }).join("") + '</span>'
           : "";
-        var day = m.status ? '<span class="day">' + esc(m.status) + "</span>" : "";
+        var st = m.status ? '<span class="st">' + esc(m.status) + '</span>' : "";
         return '<button type="button" class="card" data-i="' + i + '">' +
-          '<div class="ph" data-m="' + i + '" style="--h:' + (20 + (i * 7) % 20) + '">' +
-          '<span class="tag">' + esc(m.category) + "</span>" + day +
-          "</div>" +
-          "<h3>" + esc(m.name) + "</h3><p>" + esc(m.description) + "</p>" + tags +
-          "</button>";
+          '<span class="fr zoom">' +
+          '<span class="c">' + esc(m.category) + '</span>' +
+          '<span class="ph" data-m="' + i + '" style="--h:' + (20 + (i * 7) % 20) + '"></span>' +
+          '<span class="pr">' + esc(m.price) + '</span>' + st +
+          '<span class="vw">View</span></span>' +
+          '<h3>' + esc(m.name) + '</h3><p>' + esc(m.description) + '</p>' + tags +
+          '</button>';
       }).join("");
 
       $$("[data-m]").forEach(function (el) {
@@ -120,7 +121,7 @@
     var chipsRoot = $("#chips");
     if (chipsRoot) {
       chipsRoot.onclick = function (e) {
-        var b = e.target.closest("button[data-c]");
+        var b = e.target.closest(".chip");
         if (b) { cat = b.dataset.c; draw(); }
       };
     }
@@ -181,7 +182,7 @@
     var mb = $("#mb");
     function nav(open) {
       if (!ov || !mb) return;
-      ov.classList.toggle("open", open);
+      ov.classList.toggle("on", open);
       mb.setAttribute("aria-expanded", open);
       document.body.style.overflow = open ? "hidden" : "";
     }
@@ -194,13 +195,13 @@
       };
     }
     addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && ov && ov.classList.contains("open")) nav(false);
+      if (e.key === "Escape" && ov && ov.classList.contains("on")) nav(false);
     });
 
     var hd = $("#hd");
     var parallax = $$("[data-p]");
     function onScroll() {
-      if (hd) hd.classList.toggle("scrolled", scrollY > innerHeight * 0.5);
+      if (hd) hd.classList.toggle("s", scrollY > innerHeight * 0.5);
       if (!rm) {
         parallax.forEach(function (el) {
           var r = el.parentElement.getBoundingClientRect();
