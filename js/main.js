@@ -136,6 +136,13 @@
 
     draw();
 
+    $$(".tile[data-cat]").forEach(function (t) {
+      t.addEventListener("click", function () {
+        cat = t.dataset.cat;
+        draw();
+      });
+    });
+
     var dlg = $("#dlg");
     var gridRoot = $("#grid");
     if (gridRoot) {
