@@ -26,7 +26,6 @@ const IMAGES = {
   c4: "https://lh3.googleusercontent.com/d/1yl91uX7Fp1MfuPGVBULsu0Ru_DL6cqB8=w800"
 };
 
-/* Every dish image matched to the dish name */
 const MENU = [
   {
     name: "Idli, Sambar & Chutney",
@@ -95,14 +94,14 @@ const MENU = [
     name: "Satham with Egg / Non-Veg Curry",
     description: "Rice with egg curry or non-veg curry, appalam and rasam. Non-veg day at the kitchen.",
     price: "Lunch", category: "Lunch",
-    image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Egg_curry%2C_dahl_and_rice_%28423243840%29.jpg/960px-Egg_curry%2C_dahl_and_rice_%28423243840%29.jpg",
     status: "Wednesday", tags: ["Non-veg"]
   },
   {
     name: "Variety Rice, Veg Fry & Egg Fry",
     description: "Flavourful variety rice with vegetable fry and egg fry on the side.",
     price: "Lunch", category: "Lunch",
-    image: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=800&q=80",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Egg_Fried_Rice.jpg/960px-Egg_Fried_Rice.jpg",
     status: "Thursday", tags: ["Non-veg option"]
   },
   {
@@ -123,7 +122,7 @@ const MENU = [
     name: "Biryani Combo",
     description: "Sunday biryani combo — the full treat from Jashu's kitchen.",
     price: "Lunch", category: "Lunch",
-    image: "https://lh3.googleusercontent.com/d/1yftox_y1Z0bYncvHbubgsQarVym77ewF=w800",
+    image: "https://lh3.googleusercontent.com/d/1yftox_y1Z0bYncvHbubgsQarVym77ewF=w1000",
     status: "Sunday", tags: ["Non-veg option"]
   },
   {
@@ -151,7 +150,7 @@ const MENU = [
     name: "Idli & Tomato Kuruma",
     description: "Soft idlis with tomato kuruma for a gentle evening meal.",
     price: "Dinner", category: "Dinner",
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80",
+    image: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w800",
     status: "Thursday", tags: ["Veg"]
   },
   {
