@@ -57,8 +57,30 @@ const CHAPTERS = [
   ["Where we are", "Based in Keelkattalai, Chennai. Call or WhatsApp 6385153008 for orders and dietary preferences."]
 ];
 
+/* Prices from kitchen flyers: B ₹75/day, L ₹100/day, D ₹75/day */
 const SUBSCRIPTION = [
-  { name: "Breakfast", price: "₹700", period: "Weekly / monthly plan", desc: "Morning tiffin every day — idli, dosa, pongal, upma, poori, appam and more.", image: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w800", tags: ["Veg", "Non-veg on request"] },
-  { name: "Lunch", price: "₹1050", period: "Weekly / monthly plan", desc: "Full midday meals — rice, variety rice, biryani combos with sides.", image: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w800", tags: ["Veg", "Non-veg on request"] },
-  { name: "Dinner", price: "₹700", period: "Weekly / monthly plan", desc: "Evening comfort — chapathi, parotta, dosa, idli and uthappam with kuruma.", image: "https://lh3.googleusercontent.com/d/1mVTPHOrCLGSY2g_ZdrDhyMXakE9mpdNU=w800", tags: ["Veg", "Non-veg on request"] }
+  {
+    name: "Breakfast",
+    price: "₹525",
+    period: "per week · ₹75 / day",
+    desc: "Morning tiffin every day — idli, dosa, pongal, upma, poori, appam and more. Monthly full-meal plans also available.",
+    image: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w800",
+    tags: ["Veg", "₹75 / day"]
+  },
+  {
+    name: "Lunch",
+    price: "₹700",
+    period: "per week · ₹100 / day",
+    desc: "Full midday meals — rice, variety rice, biryani combos with sides. Non-veg options on request.",
+    image: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w800",
+    tags: ["Veg", "₹100 / day"]
+  },
+  {
+    name: "Dinner",
+    price: "₹525",
+    period: "per week · ₹75 / day",
+    desc: "Evening comfort — chapathi, parotta, dosa, idli and uthappam with kuruma.",
+    image: "https://lh3.googleusercontent.com/d/1mVTPHOrCLGSY2g_ZdrDhyMXakE9mpdNU=w800",
+    tags: ["Veg", "₹75 / day"]
+  }
 ];
