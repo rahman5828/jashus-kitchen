@@ -5,27 +5,25 @@ const CONFIG = {
   paletteSwitcher: false
 };
 
-const _P = (typeof PHOTOS !== "undefined") ? PHOTOS : {};
-
 const IMAGES = {
-  hero: _P.hero || "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1600&q=80",
-  d1: _P.t1 || "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=800&q=80",
-  t1: _P.t1 || "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80",
-  t2: _P.t2 || "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&q=80",
-  t3: _P.t3 || "https://images.unsplash.com/photo-1565557623262-b51c2513a2f3?w=800&q=80",
-  t4: _P.t4 || "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80",
-  t5: _P.t5 || "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&q=80",
-  t6: _P.t1 || "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80",
-  band: _P.t4 || "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=1600&q=80",
-  g1: _P.g1 || "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=1000&q=80",
-  g2: _P.g2 || "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&q=80",
-  g3: _P.g3 || "https://images.unsplash.com/photo-1565557623262-b51c2513a2f3?w=600&q=80",
-  g4: _P.g1 || "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80",
-  g5: _P.g2 || "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
-  c1: _P.g1 || "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&q=80",
-  c2: _P.g2 || "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=800&q=80",
-  c3: _P.g3 || "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80",
-  c4: _P.t3 || "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=800&q=80"
+  hero: "https://lh3.googleusercontent.com/d/1yftox_y1Z0bYncvHbubgsQarVym77ewF=w1600",
+  d1: "https://lh3.googleusercontent.com/d/1ZcigxGw_aQYDvxll_H661yBqH8WBOHTA=w1000",
+  t1: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w800",
+  t2: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w800",
+  t3: "https://lh3.googleusercontent.com/d/1mVTPHOrCLGSY2g_ZdrDhyMXakE9mpdNU=w800",
+  t4: "https://lh3.googleusercontent.com/d/1FaeW0E0_SRmQJDmxEfuEXgRZfok8-pH6=w800",
+  t5: "https://lh3.googleusercontent.com/d/1bf6kihtMe8OBp3K2DBsHmwE4I1vkhF7G=w800",
+  t6: "https://lh3.googleusercontent.com/d/1ZcigxGw_aQYDvxll_H661yBqH8WBOHTA=w800",
+  band: "https://lh3.googleusercontent.com/d/1yftox_y1Z0bYncvHbubgsQarVym77ewF=w1600",
+  g1: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w1000",
+  g2: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w800",
+  g3: "https://lh3.googleusercontent.com/d/1ZcigxGw_aQYDvxll_H661yBqH8WBOHTA=w800",
+  g4: "https://lh3.googleusercontent.com/d/1bf6kihtMe8OBp3K2DBsHmwE4I1vkhF7G=w800",
+  g5: "https://lh3.googleusercontent.com/d/1FaeW0E0_SRmQJDmxEfuEXgRZfok8-pH6=w800",
+  c1: "https://lh3.googleusercontent.com/d/1mVTPHOrCLGSY2g_ZdrDhyMXakE9mpdNU=w800",
+  c2: "https://lh3.googleusercontent.com/d/16nSZu-3tEiGJdEmZgBay1JjVCJj0_mOg=w800",
+  c3: "https://lh3.googleusercontent.com/d/1FaeW0E0_SRmQJDmxEfuEXgRZfok8-pH6=w800",
+  c4: "https://lh3.googleusercontent.com/d/1yl91uX7Fp1MfuPGVBULsu0Ru_DL6cqB8=w800"
 };
 
 const MENU = [
@@ -60,7 +58,7 @@ const CHAPTERS = [
 ];
 
 const SUBSCRIPTION = [
-  { name: "Breakfast", price: "₹700", period: "Weekly / monthly plan", desc: "Morning tiffin every day — idli, dosa, pongal, upma, poori, appam and more.", image: (_P.sub0 || "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80"), tags: ["Veg", "Non-veg on request"] },
-  { name: "Lunch", price: "₹1050", period: "Weekly / monthly plan", desc: "Full midday meals — rice, variety rice, biryani combos with sides.", image: (_P.sub1 || "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80"), tags: ["Veg", "Non-veg on request"] },
-  { name: "Dinner", price: "₹700", period: "Weekly / monthly plan", desc: "Evening comfort — chapathi, parotta, dosa, idli and uthappam with kuruma.", image: (_P.sub2 || "https://images.unsplash.com/photo-1565557623262-b51c2513a2f3?w=800&q=80"), tags: ["Veg", "Non-veg on request"] }
+  { name: "Breakfast", price: "₹700", period: "Weekly / monthly plan", desc: "Morning tiffin every day — idli, dosa, pongal, upma, poori, appam and more.", image: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w800", tags: ["Veg", "Non-veg on request"] },
+  { name: "Lunch", price: "₹1050", period: "Weekly / monthly plan", desc: "Full midday meals — rice, variety rice, biryani combos with sides.", image: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w800", tags: ["Veg", "Non-veg on request"] },
+  { name: "Dinner", price: "₹700", period: "Weekly / monthly plan", desc: "Evening comfort — chapathi, parotta, dosa, idli and uthappam with kuruma.", image: "https://lh3.googleusercontent.com/d/1mVTPHOrCLGSY2g_ZdrDhyMXakE9mpdNU=w800", tags: ["Veg", "Non-veg on request"] }
 ];
