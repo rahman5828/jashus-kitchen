@@ -81,8 +81,9 @@
 
       chipsEl.innerHTML = cats.map(function (c) {
         var n = c === "All" ? MENU.length : MENU.filter(function (m) { return m.category === c; }).length;
-        return '<button type="button" class="chip" aria-pressed="' + (c === cat) + '" data-c="' +
-          esc(c) + '">' + esc(c) + '<sup>' + n + '</sup></button>';
+        var on = c === cat ? " on" : "";
+        return '<button type="button" class="chip' + on + '" data-c="' + esc(c) + '">' +
+          esc(c) + " " + n + "</button>";
       }).join("");
 
       var list = MENU.map(function (m, i) { return [m, i]; }).filter(function (pair) {
@@ -99,17 +100,15 @@
       gridEl.innerHTML = list.map(function (pair) {
         var m = pair[0], i = pair[1];
         var tags = (m.tags && m.tags.length)
-          ? '<span class="tg">' + m.tags.map(function (t) { return '<i>' + esc(t) + '</i>'; }).join("") + '</span>'
+          ? '<div class="meta">' + m.tags.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + "</div>"
           : "";
-        var st = m.status ? '<span class="st">' + esc(m.status) + '</span>' : "";
+        var day = m.status ? '<span class="day">' + esc(m.status) + "</span>" : "";
         return '<button type="button" class="card" data-i="' + i + '">' +
-          '<span class="fr zoom">' +
-          '<span class="c">' + esc(m.category) + '</span>' +
-          '<span class="ph" data-m="' + i + '" style="--h:' + (20 + (i * 7) % 20) + '"></span>' +
-          '<span class="pr">' + esc(m.price) + '</span>' + st +
-          '<span class="vw">View</span></span>' +
-          '<h3>' + esc(m.name) + '</h3><p>' + esc(m.description) + '</p>' + tags +
-          '</button>';
+          '<div class="ph" data-m="' + i + '" style="--h:' + (20 + (i * 7) % 20) + '">' +
+          '<span class="tag">' + esc(m.category) + "</span>" + day +
+          "</div>" +
+          "<h3>" + esc(m.name) + "</h3><p>" + esc(m.description) + "</p>" + tags +
+          "</button>";
       }).join("");
 
       $$("[data-m]").forEach(function (el) {
@@ -121,69 +120,56 @@
     var chipsRoot = $("#chips");
     if (chipsRoot) {
       chipsRoot.onclick = function (e) {
-        var b = e.target.closest(".chip");
+        var b = e.target.closest("button[data-c]");
         if (b) { cat = b.dataset.c; draw(); }
       };
     }
 
     var q = $("#q");
     if (q) {
-      q.oninput = function (e) {
-        term = e.target.value.toLowerCase().trim();
+      q.oninput = function () {
+        term = (q.value || "").trim().toLowerCase();
         draw();
-      };
-    }
-
-    $$(".tile[data-cat]").forEach(function (t) {
-      t.addEventListener("click", function () {
-        cat = t.dataset.cat;
-        draw();
-      });
-    });
-
-    var gridRoot = $("#grid");
-    if (gridRoot) {
-      gridRoot.onclick = function (e) {
-        var c = e.target.closest(".card");
-        if (!c) return;
-        var m = MENU[c.dataset.i];
-        if (!m) return;
-        $("#dc").textContent = m.category;
-        $("#dt").textContent = m.name;
-        $("#dd").textContent = m.description;
-        $("#dp").textContent = [m.price, m.status].filter(Boolean).join(" - ");
-        fill($("#di"), m.image, m.name);
-        $("#dlg").showModal();
-      };
-    }
-
-    var dx = $("#dx");
-    if (dx) dx.onclick = function () { $("#dlg").close(); };
-    var dlg = $("#dlg");
-    if (dlg) {
-      dlg.onclick = function (e) {
-        if (e.target.id === "dlg") e.target.close();
       };
     }
 
     draw();
 
+    var dlg = $("#dlg");
+    var gridRoot = $("#grid");
+    if (gridRoot) {
+      gridRoot.onclick = function (e) {
+        var c = e.target.closest(".card");
+        if (!c || !dlg) return;
+        var m = MENU[c.dataset.i];
+        if (!m) return;
+        $("#dt").textContent = m.name;
+        $("#dd").textContent = m.description;
+        $("#dp").textContent = m.price + (m.status ? " · " + m.status : "");
+        $("#dc").textContent = m.category;
+        fill($("#di"), m.image, m.name);
+        if (dlg.showModal) dlg.showModal();
+      };
+    }
+    var dx = $("#dx");
+    if (dx) dx.onclick = function () { if (dlg) dlg.close(); };
+
     var subGrid = $("#subGrid");
     if (subGrid && typeof SUBSCRIPTION !== "undefined") {
       subGrid.innerHTML = SUBSCRIPTION.map(function (s, i) {
-        var tags = (s.tags || []).map(function (t) { return '<i>' + esc(t) + '</i>'; }).join("");
+        var tags = (s.tags || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
         return '<article class="sub-card rv">' +
-          '<div class="ph" data-sub="' + i + '" style="--h:' + (22 + i * 6) + '"></div>' +
-          '<div class="sub-body">' +
-          '<span class="eb">' + esc(s.name) + '</span>' +
-          '<h3>' + esc(s.price) + '</h3>' +
-          '<small>' + esc(s.period) + '</small>' +
-          '<p>' + esc(s.desc) + '</p>' +
-          '<div class="tg">' + tags + '</div>' +
+          '<div class="ph" data-sub="' + i + '"></div>' +
+          '<div class="body">' +
+          "<h3>" + esc(s.name) + "</h3>" +
+          '<div class="price">' + esc(s.price) + "</div>" +
+          '<div class="period">' + esc(s.period) + "</div>" +
+          '<p class="desc">' + esc(s.desc) + "</p>" +
+          '<div class="tags">' + tags + "</div>" +
           '<a class="pill f" href="https://wa.me/916385153008?text=' +
           encodeURIComponent("Hi, I would like the " + s.name + " plan") +
           '" target="_blank" rel="noopener">Subscribe on WhatsApp</a>' +
-          '</div></article>';
+          "</div></article>";
       }).join("");
       $$("[data-sub]").forEach(function (el) {
         var s = SUBSCRIPTION[el.dataset.sub];
@@ -195,7 +181,7 @@
     var mb = $("#mb");
     function nav(open) {
       if (!ov || !mb) return;
-      ov.classList.toggle("on", open);
+      ov.classList.toggle("open", open);
       mb.setAttribute("aria-expanded", open);
       document.body.style.overflow = open ? "hidden" : "";
     }
@@ -208,13 +194,13 @@
       };
     }
     addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && ov && ov.classList.contains("on")) nav(false);
+      if (e.key === "Escape" && ov && ov.classList.contains("open")) nav(false);
     });
 
     var hd = $("#hd");
     var parallax = $$("[data-p]");
     function onScroll() {
-      if (hd) hd.classList.toggle("s", scrollY > innerHeight * 0.5);
+      if (hd) hd.classList.toggle("scrolled", scrollY > innerHeight * 0.5);
       if (!rm) {
         parallax.forEach(function (el) {
           var r = el.parentElement.getBoundingClientRect();
