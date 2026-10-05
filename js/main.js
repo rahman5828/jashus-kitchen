@@ -1,9 +1,9 @@
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&","<":"<",">":">",'"':"""}[c]));
 const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
 /* chapters */
 $("#chs").innerHTML=CHAPTERS.map((c,i)=>`<div class="ch"><div class="n">0${i+1}</div><div class="tx rv"><h3>${esc(c[0])}</h3><p>${esc(c[1])}</p></div><div class="ph zoom rv" data-img="c${i+1}" data-cap="Editorial · ${esc(c[0])}" style="--h:${20+i*5}"></div></div>`).join("");
 /* image slots */
-function fill(el,src,alt){el.classList.remove("has");el.innerHTML="";el.setAttribute("role","img");el.setAttribute("aria-label","Image placeholder: "+(el.dataset.cap||""));
+function fill(el,src,alt){el.classList.remove("has");el.innerHTML="";el.setAttribute("role","img");el.setAttribute("aria-label":"Image placeholder: "+(el.dataset.cap||""));
  if(!src)return;const im=new Image();im.alt=alt||"";im.loading="lazy";im.decoding="async";im.style.opacity=0;
  im.onload=()=>{im.style.opacity="";el.classList.add("has");el.removeAttribute("role");el.removeAttribute("aria-label")};im.onerror=()=>im.remove();im.src=src;el.append(im)}
 $$("[data-img]").forEach(el=>fill(el,IMAGES[el.dataset.img],el.dataset.cap));
@@ -54,5 +54,5 @@ const PALS={ivory:["Ivory & Copper","#f6f0e6","#9a5f33"],terracotta:["Cream & Te
 const setPal=p=>{if(!PALS[p])p="ivory";document.documentElement.dataset.palette=p;$$(".pal button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===p))};
 if(CONFIG.paletteSwitcher){const d=document.createElement("div");d.className="pal";d.setAttribute("role","group");d.setAttribute("aria-label","Colour palette");
  d.innerHTML=Object.entries(PALS).map(([k,v])=>`<button data-p="${k}" aria-label="${v[0]}" title="${v[0]}" style="--c1:${v[1]};--c2:${v[2]}"></button>`).join("");
- d.=e=>{const b=e.target.closest("button");if(b)setPal(b.dataset.p)};document.body.append(d)}
+ d.onclick=e=>{const b=e.target.closest("button");if(b)setPal(b.dataset.p)};document.body.append(d)}
 setPal(new URLSearchParams(location.search).get("palette")||CONFIG.palette);
