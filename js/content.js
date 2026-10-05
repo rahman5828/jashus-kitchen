@@ -7,7 +7,7 @@ const CONFIG = {
 
 const IMAGES = {
   hero: "https://lh3.googleusercontent.com/d/1yftox_y1Z0bYncvHbubgsQarVym77ewF=w1600",
-  d1: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w1200",
+  d1: "https://lh3.googleusercontent.com/d/1ZcigxGw_aQYDvxll_H661yBqH8WBOHTA=w1200",
   t1: "https://lh3.googleusercontent.com/d/1LrisAc6vF_dN8DHygFnMt07uyk6notma=w800",
   t2: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w800",
   t3: "https://lh3.googleusercontent.com/d/1mVTPHOrCLGSY2g_ZdrDhyMXakE9mpdNU=w800",
@@ -122,7 +122,7 @@ const MENU = [
     name: "Biryani Combo",
     description: "Sunday biryani combo — the full treat from Jashu's kitchen.",
     price: "Lunch", category: "Lunch",
-    image: "https://lh3.googleusercontent.com/d/1yftox_y1Z0bYncvHbubgsQarVym77ewF=w1000",
+    image: "https://lh3.googleusercontent.com/d/1hQMX7zjLwHHMECmx5ME9x_6V2ZN3-ep9=w1000",
     status: "Sunday", tags: ["Non-veg option"]
   },
   {
